@@ -2,10 +2,10 @@ version: '3.7'
 
 services:
   reverse-proxy:
-    image: traefik:2.0
+    image: traefik:2.1.4
     command:
       - "--providers.docker"
-      - "--entryPoints=Name:http Address::${EXTERNAL_PORT}"
+      - "--entrypoints.http.address=:${EXTERNAL_PORT}"
     restart: unless-stopped
     labels:
       - "traefik.enable=false"
