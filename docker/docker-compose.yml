@@ -152,6 +152,20 @@ services:
     command: tcp-listen:2375,reuseaddr,fork unix:/docker.sock
     volumes:
       - /var/run/docker.sock:/docker.sock
+  
+  pypiserver:
+    image: pypiserver/pypiserver:v1.3.2
+#    labels:
+#      - "traefik.http.routers.pypiserver.rule=Host(`${EXTERNAL_DOMAIN}`) && PathPrefix(`/pypiserver`)"
+#      - "traefik.http.middlewares.pypiserver-stripprefix.stripprefix.prefixes=/pypiserver"
+#      - "traefik.http.services.pypiserver.LoadBalancer.server.Port=8080"
+#      - "traefik.http.routers.pypiserver.service=pypiserver"
+#      - "traefik.http.routers.pypiserver.middlewares=pypiserver-stripprefix"
+
+#    extra_hosts:
+#      - "${EXTERNAL_DOMAIN}:${DOCKER_BRIDGE_IP}"
+    ports:
+      - "8080:8080"
 
 secrets:
   agent_private_key:
