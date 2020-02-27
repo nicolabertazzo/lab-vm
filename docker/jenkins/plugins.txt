@@ -36,6 +36,8 @@ credentials-binding:1.19
 credentials:2.2.0
 display-url-api:2.3.1
 docker-commons:1.15
+docker-java-api:3.0.14
+docker-plugin:1.1.9
 docker-workflow:1.18
 durable-task:1.29
 email-ext:2.66

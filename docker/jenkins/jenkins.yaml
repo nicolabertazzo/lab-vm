@@ -57,7 +57,7 @@ jenkins:
       userId: "SYSTEM"
   - permanent:
       labelString: "jdk8 java8 maven maven-jdk8 maven-java8 maven3 maven3-jdk8 maven3-java8\
-        \ docker"
+        \ docker py37"
       launcher:
         sSHLauncher:
           credentialsId: "ssh-nodes-key"

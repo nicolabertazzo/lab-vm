@@ -155,17 +155,16 @@ services:
   
   pypiserver:
     image: pypiserver/pypiserver:v1.3.2
-#    labels:
-#      - "traefik.http.routers.pypiserver.rule=Host(`${EXTERNAL_DOMAIN}`) && PathPrefix(`/pypiserver`)"
-#      - "traefik.http.middlewares.pypiserver-stripprefix.stripprefix.prefixes=/pypiserver"
-#      - "traefik.http.services.pypiserver.LoadBalancer.server.Port=8080"
-#      - "traefik.http.routers.pypiserver.service=pypiserver"
-#      - "traefik.http.routers.pypiserver.middlewares=pypiserver-stripprefix"
-
-#    extra_hosts:
-#      - "${EXTERNAL_DOMAIN}:${DOCKER_BRIDGE_IP}"
+#   NO PASSWORD
+    command: -P . -a . /data/packages
     ports:
       - "8080:8080"
+
+  local-docker-registry:
+    image: registry:2
+    restart: unless-stopped
+    ports:
+      - "5000:5000"
 
 secrets:
   agent_private_key:
