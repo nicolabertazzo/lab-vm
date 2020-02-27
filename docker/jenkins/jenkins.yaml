@@ -33,11 +33,11 @@ jenkins:
   mode: EXCLUSIVE
   nodes:
   - permanent:
-      labelString: "jdknext javanext maven-jdknext maven-javanext maven3-jdknext maven3-javanext"
+      labelString: "py37"
       launcher:
         sSHLauncher:
           credentialsId: "ssh-nodes-key"
-          host: "jenkins-maven-jdknext-node"
+          host: "jenkins-python37-node"
           javaPath: "/usr/lib/jvm/java-1.8-openjdk/bin/java"
           jvmOptions: "-XshowSettings:vm"
           launchTimeoutSeconds: 15
@@ -46,18 +46,17 @@ jenkins:
           retryWaitTime: 5
           sshHostKeyVerificationStrategy: "nonVerifyingKeyVerificationStrategy"
       mode: EXCLUSIVE
-      name: "maven-jdknext-node"
-      nodeDescription: "Node for running Maven with Openjdknext"
+      name: "python37-node"
+      nodeDescription: "Node for running python 3.7"
       nodeProperties:
       - envVars:
           env:
-          - key: "JAVA_HOME"
-            value: "/opt/openjdk-13"
+          - key: "PATH"
+            value: "usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
       remoteFS: "/home/jenkins"
       userId: "SYSTEM"
   - permanent:
-      labelString: "jdk8 java8 maven maven-jdk8 maven-java8 maven3 maven3-jdk8 maven3-java8\
-        \ docker py37"
+      labelString: "docker"
       launcher:
         sSHLauncher:
           credentialsId: "ssh-nodes-key"
@@ -69,8 +68,8 @@ jenkins:
           port: 22
           retryWaitTime: 5
           sshHostKeyVerificationStrategy: "nonVerifyingKeyVerificationStrategy"
-      name: "maven-jdk8-node"
-      nodeDescription: "Node for running Maven with OpenJDK8, or Docker workloads"
+      name: "docker-node"
+      nodeDescription: "Node for running Docker workloads"
       nodeProperties:
       - envVars:
           env:
@@ -80,7 +79,7 @@ jenkins:
       remoteFS: "/home/jenkins"
       userId: "SYSTEM"
   - permanent:
-      labelString: "deploy production docker"
+      labelString: "deploy production"
       launcher:
         sSHLauncher:
           credentialsId: "ssh-nodes-key"
